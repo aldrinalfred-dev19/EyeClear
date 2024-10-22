@@ -35,7 +35,7 @@ public class Main {
         }
         
         // Remark #1 success scenario
-        boolean remarkResult = prescription.addRemark("The prescription was very accurate and helpful.", "client");
+        boolean remarkResult = prescription.addRemark("Dr Sandra provided me all details with clarity.", "client");
         if (remarkResult) {
             System.out.println("First remark added successfully!");
         } else {
@@ -43,7 +43,7 @@ public class Main {
         }
 
         // Remark #2 success scenario
-        remarkResult = prescription.addRemark("Optometrist provided a thorough .", "optometrist");
+        remarkResult = prescription.addRemark("The place was clean and tidy.", "optometrist");
         if (remarkResult) {
             System.out.println("Second remark added successfully!");
         } else {
@@ -55,7 +55,7 @@ public class Main {
         if (remarkResult) {
             System.out.println("Third remark added successfully!");
         } else {
-            System.out.println("Failed to add third remark. Limit reached.");
+            System.out.println("Third remark added failed as only 2 remarks can be added in total");
         }
     }
         
