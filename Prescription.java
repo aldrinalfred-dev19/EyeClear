@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 
-
 public class Prescription {
     private int prescID;
     private String firstName;
