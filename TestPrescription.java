@@ -3,6 +3,7 @@ package com.sw.assessment4;
 
 import static org.junit.Assert.assertFalse;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -122,8 +123,10 @@ class TestPrescription {
         assertFalse(prescription.addPrescription());  
     }
     
+    // Test Case #5: CCheck function with Optometrist name not provided
+
     @Test
-    public void testOptometristNameNotProvided() {
+    public void testOptometristNameEmpty() {
         Prescription prescription = new Prescription();
 
         //Test data #1
@@ -163,6 +166,54 @@ class TestPrescription {
         }
 
         assertFalse(prescription.addPrescription());  
+        
+    }
+    
+    // Test Case #6: Check function with wrong month provided
+
+    @Test
+    public void testInvalidMonthProvided() {
+        Prescription prescription = new Prescription();
+        
+        // Test Data #1
+        prescription.setFirstName("Mohammed");
+        prescription.setLastName("Salah");
+        prescription.setAddress("64 Princess St, Watsonia, 3087, Australia");
+        prescription.setSphere(-2.7f);
+        prescription.setCylinder(-1.28f);
+        prescription.setAxis(90);
+        prescription.setOptometrist("Dr. Sandra Hopkins");
+        
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+            dateFormat.setLenient(false);
+            Date invalidDate1 = dateFormat.parse("15/17/24");
+            prescription.setExaminationDate(invalidDate1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        assertFalse(prescription.addPrescription());
+
+        // Test Data #2
+        prescription.setFirstName("Harry");
+        prescription.setLastName("Magulre");
+        prescription.setAddress("64 Princess St, Watsonia, 3087, Australia");
+        prescription.setSphere(-2.7f);
+        prescription.setCylinder(-1.28f);
+        prescription.setAxis(90);
+        prescription.setOptometrist("Dr. Helen James");
+
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+            dateFormat.setLenient(false);
+            Date invalidDate2 = dateFormat.parse("15/13/24");
+            prescription.setExaminationDate(invalidDate2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        assertFalse(prescription.addPrescription());
     }
 
 }

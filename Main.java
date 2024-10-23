@@ -50,7 +50,7 @@ public class Main {
             System.out.println("Failed to add the second remark.");
         }
 
-        // Remark #2 scenario fails as limit reached
+        // Remark #3 scenario fails as limit reached
         remarkResult = prescription.addRemark("his is an additional client remark.", "client");
         if (remarkResult) {
             System.out.println("Third remark added successfully!");

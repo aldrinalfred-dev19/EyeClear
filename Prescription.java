@@ -1,6 +1,7 @@
 package com.sw.assessment4;
 
 import java.util.ArrayList;
+
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.io.FileWriter;
@@ -120,7 +121,12 @@ public class Prescription {
 
         // Condition to convert examination date format to DD/MM/YY 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
-        String formattedDate = dateFormat.format(examinationDate);
+        try {
+            String formattedDate = dateFormat.format(examinationDate);
+        } catch (Exception e) {
+            // If the date format is invalid, return false
+            return false;
+        }
 
         // Condition to check if name of optometrist is between 8 and 25 characters
         if (optometrist.length() < 8 || optometrist.length() > 25) {
@@ -136,7 +142,7 @@ public class Prescription {
             writer.write("Sphere: " + sphere + "\n");
             writer.write("Cylinder: " + cylinder + "\n");
             writer.write("Axis: " + axis + "\n");
-            writer.write("Eye Exam Date: " + formattedDate + "\n");
+            writer.write("Eye Exam Date: " + dateFormat.format(examinationDate) + "\n");
             writer.write("Optometrist: " + optometrist + "\n");
             writer.write("------------------------\n");
         } catch (IOException e) {
